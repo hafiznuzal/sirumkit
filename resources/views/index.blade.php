@@ -994,19 +994,29 @@
 								<div class="hr hr32 hr-dotted"></div>
 								<!-- <div> -->
 								<div class="row">
-									<div class="col-md-7">
-										<div id="googleMap" style="width:700px;height:380px;">
+									<div class="col-md-8">
+										<div id="googleMap" style="width:761px;height:380px;">
 										</div>
 									</div>
-									<div class="col-sm-5">				
+									<div class="col-sm-3">				
 										<form class="form-horizontal" role="form">
 										<div class="form-group">
-											<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Text Field </label>
-
-											<div class="col-sm-9">
-												<input type="text" id="form-field-1" placeholder="Username" class="col-xs-10 col-sm-5" />
+											<label class="col-sm-5 control-label no-padding-right" for="form-field-1"> Keberangkatan </label>
+											<div class="col-sm-7">
+												<span class="input-icon">
+													<input type="text" id="form-field-icon-1" />
+													<i class="ace-icon fa fa-bus blue"></i>
+												</span>											
 											</div>
 										</div>
+											<label class="col-sm-5 control-label no-padding-right" for="form-field-1" style="text-align: left;"> Kedatangan </label>
+												<div class="col-sm-7">
+													<span class="input-icon">
+														<input type="text" id="form-field-icon-1" />
+														<i class="ace-icon fa fa-bus blue"></i>
+													</span>											
+												</div>
+											</div>
 										</form>
 									</div>
 								</div>
