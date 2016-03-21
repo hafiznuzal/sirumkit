@@ -29,4 +29,7 @@ Route::get('/', function () {
 Route::group(['middleware' => ['web']], function () {
     //
     Route::get('index','HomeController@index');
+    Route::get('koridor','HomeController@koridor');
+    Route::get('jadwal','HomeController@jadwal');
+
 });

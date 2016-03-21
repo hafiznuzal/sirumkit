@@ -11,8 +11,15 @@ class HomeController extends Controller
 {
 	public function index()
     {
-    	return view('template-navbar');
     	return view('index');	
+    }
+    public function koridor()
+    {
+    	return view('information-koridor');	
+    }
+    public function jadwal()
+    {
+    	return view('informasi-jadwal');	
     }
 
 }
