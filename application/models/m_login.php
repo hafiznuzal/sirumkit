@@ -9,10 +9,10 @@ class M_login extends CI_Model {
  
     function login($username, $password) {
         //create query to connect user login database
-        $this->db->select('user, password,hak');
+        $this->db->select('Username, Password,hak');
         $this->db->from('user');
-        $this->db->where('user', $username);
-        $this->db->where('password', MD5($password));
+        $this->db->where('Username', $username);
+        $this->db->where('Password', MD5($password));
         $this->db->limit(1);
          
         //get query and processing

@@ -6,20 +6,73 @@ class m_report extends CI_Model
 		$this->load->database();
 	}
 
-	public function tabel_statistik1($tahun)
+	public function tabel_harian_masuk($tanggal)
 	{
-		$sql = "SELECT COUNT( DISTINCT PRS.ID_PERUSAHAAN ) AS PENGEMBANG, SUM( ID_IJIN ) AS IJIN_LOKASI, SUM( LUAS ) AS LUAS_IJIN_LOKASI, SUM( RENCANA_TAPAK ) AS RENCANA_TAPAK, SUM( PEMBEBASAN ) AS PEMBEBASAN, SUM( TERBANGUN ) AS TERBANGUN, SUM( BELUM_TERBANGUN ) AS BELUM_TERBANGUN
-				FROM PEMBANGUNAN AS PEM
-				JOIN PERUMAHAN AS PRM ON PEM.ID_PERUMAHAN = PRM.ID_PERUMAHAN
-				JOIN PERUSAHAAN AS PRS ON PRS.ID_PERUSAHAAN = PRM.ID_PERUSAHAAN
-				JOIN IJIN AS IJIN ON IJIN.ID_IJIN = PRM.ID_PERUMAHAN
-				WHERE PEM.TAHUN = '$tahun'";
+		$sql = "SELECT *
+				FROM transaksi as transaksi
+				WHERE Tanggal = '$tanggal' AND Jenis = 1";
 		$query = $this->db->query($sql);
 		$data = $query->result_array();
 		return $data;
 	}
 
-	public function tabel_statistik2_rencana($tahun)
+	public function tabel_harian_keluar($tanggal)
+	{
+		$sql = "SELECT *
+				FROM transaksi as transaksi
+				WHERE Tanggal = '$tanggal' AND Jenis = 2";
+		$query = $this->db->query($sql);
+		$data = $query->result_array();
+		return $data;
+	}
+
+
+	public function tabel_harian_jumlah_masuk($tanggal)
+	{
+		$sql = "SELECT SUM(Biaya) as Biaya_Masuk
+				FROM transaksi as transaksi
+				WHERE Jenis = 1 and Tanggal = '$tanggal'";
+		$query = $this->db->query($sql);
+		$data = $query->result_array();
+		return $data;
+	}
+
+	public function tabel_harian_jumlah_keluar($tanggal)
+	{
+		$sql = "SELECT SUM(Biaya) as Biaya_Keluar
+				FROM transaksi as transaksi
+				WHERE Jenis = 2 and Tanggal = '$tanggal'";
+		$query = $this->db->query($sql);
+		$data = $query->result_array();
+		return $data;
+	}
+
+	
+
+	public function tabel_bln_thn_jumlah_masuk($tanggal)
+	{
+		$sql = "SELECT SUM(Biaya) as Biaya_Masuk
+				FROM transaksi as transaksi
+				WHERE Jenis = 1 and Tanggal LIKE '"$tanggal."%'";
+		$query = $this->db->query($sql);
+		$data = $query->result_array();
+		return $data;
+	}	
+
+	public function tabel_bln_thn_jumlah_keluar($tanggal)
+	{
+		$sql = "SELECT SUM(Biaya) as Biaya_Keluar
+				FROM transaksi as transaksi
+				WHERE Jenis = 2 and Tanggal LIKE '"$tanggal."%'";
+		$query = $this->db->query($sql);
+		$data = $query->result_array();
+		return $data;
+	}
+
+
+
+
+	public function tabel_bulanan($tanggal)
 	{
 		$sql = "SELECT SUM( RENC_RSS ) AS RENC_RSS, SUM( RENC_RS ) AS RENC_RS, SUM( RENC_RM ) AS RENC_RM, SUM( RENC_MW ) AS RENC_MW, SUM( RENC_RUKO ) AS RENC_RUKO
 				FROM PEMBANGUNAN
