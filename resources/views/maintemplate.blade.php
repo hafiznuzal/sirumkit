@@ -147,7 +147,7 @@
 				</div><!-- /.sidebar-shortcuts -->
 
 				<ul class="nav nav-list">
-					<li class="active">
+					<li class="">
 						<a href="{{ URL::to('/index') }}">
 							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> Dashboard </span>
@@ -290,6 +290,21 @@
 		<!-- ace scripts -->
 		<script src="{{ url('js/ace-elements.min.js')}}"></script>
 		<script src="{{ url('js/ace.min.js')}}"></script>
+
+		<script>
+	  $(document).ready(function () {
+    $('.nav li').click(function(e) {
+
+        $('.nav li').removeClass('active');
+
+        var $this = $(this);
+        if (!$this.hasClass('active')) {
+            $this.addClass('active');
+        }
+        e.preventDefault();
+    });
+});
+		</script>
 
 		@yield('js')
 	</body>
